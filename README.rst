@@ -8,7 +8,7 @@ Contents:
    :maxdepth: 2
 
    src/lazr/config/docs/usage
-   src/lazr/config/docs/NEWS
+   NEWS
    HACKING
 
 
