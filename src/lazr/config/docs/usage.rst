@@ -1230,39 +1230,41 @@ a Python timedelta_.
 The function converts from an integer to the equivalent number of seconds.
 
     >>> as_timedelta('45s')
-    datetime.timedelta(0, 45)
+    datetime.timedelta(...)
+    >>> print(as_timedelta('45s'))
+    0:00:45
 
 The function also accepts suffixes ``m`` for minutes...
 
-    >>> as_timedelta('3m')
-    datetime.timedelta(0, 180)
+    >>> print(as_timedelta('3m'))
+    0:03:00
 
 ...``h`` for hours...
 
-    >>> as_timedelta('2h')
-    datetime.timedelta(0, 7200)
+    >>> print(as_timedelta('2h'))
+    2:00:00
 
 ...and ``d`` for days...
 
-    >>> as_timedelta('4d')
-    datetime.timedelta(4)
+    >>> print(as_timedelta('4d'))
+    4 days, 0:00:00
 
 ...and ``w`` for weeks.
 
-    >>> as_timedelta('4w')
-    datetime.timedelta(28)
+    >>> print(as_timedelta('4w'))
+    28 days, 0:00:00
 
 The function accepts a fractional number of seconds, indicating microseconds.
 
-    >>> as_timedelta('3.2s')
-    datetime.timedelta(0, 3, 200000)
+    >>> print(as_timedelta('3.2s'))
+    0:00:03.200000
 
 It also accepts any combination thereof.
 
-    >>> as_timedelta('3m22.5s')
-    datetime.timedelta(0, 202, 500000)
-    >>> as_timedelta('4w2d9h3s')
-    datetime.timedelta(30, 32403)
+    >>> print(as_timedelta('3m22.5s'))
+    0:03:22.500000
+    >>> print(as_timedelta('4w2d9h3s'))
+    30 days, 9:00:03
 
 But doesn't accept "weird" or duplicate combinations.
 
