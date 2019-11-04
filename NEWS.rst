@@ -2,6 +2,12 @@
 NEWS for lazr.config
 ====================
 
+2.2.2
+=====
+- Officially add support for Python 3.7 and 3.8.  The test suite required
+  some changes since the `repr` of `datetime.timedelta` objects changed in
+  3.7.
+
 2.2.1 (2017-10-20)
 ==================
 - Adjust versioning strategy to avoid importing pkg_resources, which is slow
