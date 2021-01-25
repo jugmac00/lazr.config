@@ -49,10 +49,16 @@ from textwrap import dedent
 try:
     from io import StringIO
     from configparser import NoSectionError, RawConfigParser
+
+    def _parser_read_file(parser, f, source=None):
+        parser.read_file(f, source)
 except ImportError:
     # Python 2.
     from StringIO import StringIO
     from ConfigParser import NoSectionError, RawConfigParser
+
+    def _parser_read_file(parser, f, source=None):
+        parser.readfp(f, source)
 
 
 from zope.interface import implementer
@@ -261,7 +267,7 @@ class ConfigSchema:
         else:
             raw_schema = file_object
         parser = RawConfigParser()
-        parser.readfp(raw_schema, filename)
+        _parser_read_file(parser, raw_schema, filename)
         self._setSectionSchemasAndCategoryNames(parser)
 
     def _getRawSchema(self, filename):
@@ -581,7 +587,7 @@ class Config:
         if sys.version_info >= (3,):
             kws['strict'] = False
         parser = RawConfigParser(**kws)
-        parser.readfp(StringIO(conf_data), conf_filename)
+        _parser_read_file(parser, StringIO(conf_data), conf_filename)
         confs.append((conf_filename, parser, encoding_errors))
         if parser.has_option('meta', 'extends'):
             base_path = dirname(conf_filename)

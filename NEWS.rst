@@ -2,6 +2,10 @@
 NEWS for lazr.config
 ====================
 
+2.2.3
+=====
+- Fix deprecation warning on Python >= 3.2.  (LP: #1870199)
+
 2.2.2 (2019-11-04)
 ==================
 - Officially add support for Python 3.7 and 3.8.  The test suite required
