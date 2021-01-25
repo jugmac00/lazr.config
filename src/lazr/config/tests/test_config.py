@@ -158,10 +158,24 @@ key1: schema suffixes are not permitted
                           UnknownKeyError, UnknownSectionError])
 
     def test_not_stackable(self):
+        try:
+            from zope.interface.exceptions import MultipleInvalid
+        except ImportError:  # zope.interface < 5.0.0
+            class MultipleInvalid(Exception):
+                pass
+
         schema = ConfigSchema(self._testfile('base.conf'))
         config = schema.load(self._testfile('local.conf'))
-        self.assertRaises(DoesNotImplement,
-                          verifyObject, IStackableConfig, config.extends)
+        try:
+            verifyObject(IStackableConfig, config.extends)
+        except DoesNotImplement:
+            pass
+        except MultipleInvalid as e:
+            if not any(isinstance(invalid, DoesNotImplement)
+                       for invalid in e.exceptions):
+                self.fail('MultipleInvalid raised without DoesNotImplement')
+        else:
+            self.fail('DoesNotImplement not raised')
 
     def test_bad_pop(self):
         schema = ConfigSchema(self._testfile('base.conf'))
