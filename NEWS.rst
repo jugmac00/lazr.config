@@ -5,6 +5,7 @@ NEWS for lazr.config
 2.2.3
 =====
 - Fix tests with zope.interface >= 5.0.0.
+- Fix deprecation warning on Python >= 3.2.  (LP: #1870199)
 
 2.2.2 (2019-11-04)
 ==================
