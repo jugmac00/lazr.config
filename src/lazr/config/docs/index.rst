@@ -1339,6 +1339,8 @@ Other Documents
 .. toctree::
    :glob:
 
-   *
+   self
+   Contributing <CONTRIBUTING>
+   News <NEWS>
 
 .. _timedelta: http://docs.python.org/3/library/datetime.html#timedelta-objects

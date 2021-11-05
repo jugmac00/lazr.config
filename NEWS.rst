@@ -5,6 +5,7 @@ NEWS for lazr.config
 2.2.4
 =====
 - Add basic pre-commit configuration.
+- Publish Documentation on Read the Docs.
 
 2.2.3 (2021-01-26)
 ==================

@@ -39,13 +39,12 @@ or send a message to:
     lazr-developers@lists.launchpad.net
 
 
-Running the tests
-=================
+============
+Contributing
+============
 
-The tests suite requires tox_ and nose_ and is compatible with both Python 2
-and Python 3.  To run the full test suite::
+To run this project's tests, use `tox <https://tox.readthedocs.io/en/latest/>`_.
 
-    $ tox
-
-.. _nose: https://nose.readthedocs.org/en/latest/
-.. _tox: https://testrun.org/tox/latest/
+To update the `project's documentation
+<https://lazrconfig.readthedocs.io/en/latest/>`_ you need to trigger a manual
+build on the project's dashboard on https://readthedocs.org.

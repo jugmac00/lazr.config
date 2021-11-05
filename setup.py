@@ -47,6 +47,11 @@ files. The format supports schema validation.
         'lazr.delegates',
         ],
     url='https://launchpad.net/lazr.config',
+    project_urls={
+        "Source": "https://code.launchpad.net/lazr.config",
+        "Issue Tracker": "https://bugs.launchpad.net/lazr.config",
+        "Documentation": "https://lazrconfig.readthedocs.io/en/latest/",
+    },
     download_url='https://launchpad.net/lazr.config/+download',
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -63,4 +68,7 @@ files. The format supports schema validation.
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         ],
+    extras_require=dict(
+        docs=['Sphinx'],
+        ),
     )

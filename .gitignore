@@ -12,3 +12,4 @@ dist
 .tox
 __pycache__
 .coverage
+src/lazr/config/docs/_build

@@ -11,14 +11,14 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import os
-
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration -----------------------------------------------------
+
+from lazr.config import __version__
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
@@ -37,20 +37,18 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'README'
+master_doc = 'index'
 
 # General information about the project.
 project = u'lazr.config'
-copyright = u'2013-2015, LAZR developers'
+copyright = u'2013-2021, LAZR developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-with open('src/lazr/config/_version.py') as version_file:
-    exec(version_file.read())  # sets __version__
-version = __version__  # noqa: F821
+version = __version__
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -93,7 +91,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'alabaster'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -122,7 +120,7 @@ html_theme = 'default'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = []
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -133,7 +131,16 @@ html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-#html_sidebars = {}
+
+# This is required for the alabaster theme
+# refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
+html_sidebars = {
+    '**': [
+        'globaltoc.html',
+        'relations.html',  # needs 'show_related': True theme option to display
+        'searchbox.html',
+    ]
+}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -171,7 +178,7 @@ htmlhelp_basename = 'lazrconfigdoc'
 
 # -- Options for LaTeX output --------------------------------------------------
 
-latex_elements = {
+# latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 #'papersize': 'letterpaper',
 
@@ -180,14 +187,10 @@ latex_elements = {
 
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
-}
+# }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-  ('index', 'lazrconfig.tex', u'lazr.config Documentation',
-   u'LAZR developers', 'manual'),
-]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -214,10 +217,6 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    ('index', 'lazrconfig', u'lazr.config Documentation',
-     [u'LAZR developers'], 1)
-]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
@@ -228,11 +227,6 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-  ('index', 'lazrconfig', u'lazr.config Documentation',
-   u'LAZR developers', 'lazrconfig', 'One line description of project.',
-   'Miscellaneous'),
-]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
@@ -242,26 +236,3 @@ texinfo_documents = [
 
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
-
-# Make upload to packages.python.org happy.
-def index_html():
-    import errno
-    cwd = os.getcwd()
-    try:
-        try:
-            os.makedirs('build/sphinx/html')
-        except OSError as error:
-            if error.errno != errno.EEXIST:
-                raise
-        os.chdir('build/sphinx/html')
-        try:
-            os.symlink('README.html', 'index.html')
-            print('index.html -> README.html')
-        except OSError as error:
-            if error.errno != errno.EEXIST:
-                raise
-    finally:
-        os.chdir(cwd)
-
-import atexit
-atexit.register(index_html)
