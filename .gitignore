@@ -11,3 +11,4 @@ build
 dist
 .tox
 __pycache__
+.coverage

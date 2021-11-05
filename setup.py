@@ -21,7 +21,7 @@ with open('src/lazr/config/_version.py') as version_file:
 
 setup(
     name='lazr.config',
-    version=__version__,
+    version=__version__,  # noqa: F821
     namespace_packages=['lazr'],
     packages=find_packages('src'),
     package_dir={'': 'src'},

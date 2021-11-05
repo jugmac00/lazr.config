@@ -11,8 +11,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-from __future__ import print_function
-import sys, os
+import os
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -51,7 +50,7 @@ copyright = u'2013-2015, LAZR developers'
 # The short X.Y version.
 with open('src/lazr/config/_version.py') as version_file:
     exec(version_file.read())  # sets __version__
-version = __version__
+version = __version__  # noqa: F821
 # The full version, including alpha/beta/rc tags.
 release = version
 

@@ -350,7 +350,7 @@ class ConfigSchema:
             raise InvalidSectionNameError('[%s] has too many parts.' % name)
         if self._section_name_pattern.match(section_name) is None:
             raise InvalidSectionNameError(
-                '[%s] name does not match [\w.-]+.' % name)
+                r'[%s] name does not match [\w.-]+.' % name)
         return (section_name, category_name,
                 is_template, is_optional, is_master)
 

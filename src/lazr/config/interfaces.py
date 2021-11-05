@@ -68,8 +68,10 @@ class UnknownSectionError(ConfigSchemaError):
 class UnknownKeyError(ConfigSchemaError):
     """The section has a key that is not in the schema."""
 
+
 class NoConfigError(ConfigSchemaError):
     """No config has the name."""
+
 
 class ConfigErrors(ConfigSchemaError):
     """The errors in a Config.
@@ -122,6 +124,7 @@ class ISection(ISectionSchema):
         :return: the value of the matching key.
         :raise: AttributeError if there is no key with the name.
         """
+
 
 class IConfigLoader(Interface):
     """A configuration file loader."""
@@ -210,7 +213,6 @@ class IStackableConfig(IConfigSchema):
     data = Attribute("The current ConfigData. use by the config.")
     extends = Attribute("The ConfigData that this config extends.")
     overlays = Attribute("The stack of ConfigData that define this config.")
-
 
     def __getattr__(name):
         """Return the named section.

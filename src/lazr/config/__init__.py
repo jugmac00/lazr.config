@@ -22,5 +22,5 @@ __version__
 # While we generally frown on "*" imports, this, combined with the fact we
 # only test code from this module, means that we can verify what has been
 # exported.
-from lazr.config._config import *
-from lazr.config._config import __all__
+from lazr.config._config import *  # noqa: F401, F403
+from lazr.config._config import __all__  # noqa: F401, F402

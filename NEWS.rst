@@ -2,6 +2,10 @@
 NEWS for lazr.config
 ====================
 
+2.2.4
+=====
+- Add basic pre-commit configuration.
+
 2.2.3 (2021-01-26)
 ==================
 - Fix tests with zope.interface >= 5.0.0.
