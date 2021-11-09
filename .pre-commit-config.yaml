@@ -16,3 +16,7 @@ repos:
     rev: 4.0.1
     hooks:
     -   id: flake8
+-   repo: https://github.com/get-woke/woke
+    rev: ee781d3ce0ddf835267764f27f4ffdd2dd21fa27
+    hooks:
+    -   id: woke-from-source

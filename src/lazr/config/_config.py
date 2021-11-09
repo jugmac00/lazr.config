@@ -389,7 +389,7 @@ class ConfigSchema:
         section_schemas = []
         for key in self._section_schemas:
             section = self._section_schemas[key]
-            category, dummy = section.category_and_section_names
+            category, _ = section.category_and_section_names
             if name == category:
                 section_schemas.append(section)
         return section_schemas
@@ -456,7 +456,7 @@ class ConfigData:
         category_names = set()
         for section_name in self._sections:
             section = self._sections[section_name]
-            category, dummy = section.category_and_section_names
+            category, _ = section.category_and_section_names
             if category is not None:
                 category_names.add(category)
         return tuple(category_names)
@@ -491,7 +491,7 @@ class ConfigData:
         sections = []
         for key in self._sections:
             section = self._sections[key]
-            category, dummy = section.category_and_section_names
+            category, _ = section.category_and_section_names
             if name == category:
                 sections.append(section)
         return sections

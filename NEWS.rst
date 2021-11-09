@@ -6,6 +6,7 @@ NEWS for lazr.config
 =====
 - Add basic pre-commit configuration.
 - Publish Documentation on Read the Docs.
+- Apply inclusive naming via the woke pre-commit hook.
 
 2.2.3 (2021-01-26)
 ==================
