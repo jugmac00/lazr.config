@@ -12,4 +12,5 @@ dist
 .tox
 __pycache__
 .coverage
+htmlcov
 src/lazr/config/docs/_build
