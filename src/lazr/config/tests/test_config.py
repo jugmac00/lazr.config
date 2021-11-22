@@ -49,10 +49,6 @@ from lazr.config.interfaces import (
 
 
 class TestConfig(unittest.TestCase):
-    def setUp(self):
-        # Python 2.6 does not have assertMultilineEqual
-        self.meq = getattr(self, 'assertMultiLineEqual', self.assertEqual)
-
     def _testfile(self, conf_file):
         return pkg_resources.resource_filename(
             'lazr.config.tests.testdata', conf_file)
@@ -198,7 +194,7 @@ key1: schema suffixes are not permitted
 multiline value 1
     multiline value 2"""
         new = convert(orig)
-        self.meq(new, orig)
+        self.assertMultiLineEqual(new, orig)
 
     def test_multiline_strips_leading_and_trailing_whitespace(self):
         schema = ImplicitTypeSchema(self._testfile('base.conf'))
@@ -209,12 +205,12 @@ multiline value 1
     multiline value 2
     """
         new = convert(orig)
-        self.meq(new, orig.strip())
+        self.assertMultiLineEqual(new, orig.strip())
 
     def test_multiline_key(self):
         schema = ImplicitTypeSchema(self._testfile('base.conf'))
         config = schema.load(self._testfile('local.conf'))
-        self.meq(config['section_33'].key2, """\
+        self.assertMultiLineEqual(config['section_33'].key2, """\
 multiline value 1
 multiline value 2""")
 

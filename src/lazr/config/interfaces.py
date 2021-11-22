@@ -85,7 +85,6 @@ class ConfigErrors(ConfigSchemaError):
         :param message: a message string
         :param errors: a list of errors in the config, or None
         """
-        # Without the suppression above, this produces a warning in Python 2.6.
         self.message = message
         self.errors = errors
 

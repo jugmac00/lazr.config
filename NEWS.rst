@@ -9,7 +9,7 @@ NEWS for lazr.config
 - Apply inclusive naming via the woke pre-commit hook.
 - Test using ``zope.testrunner`` rather than ``nose``.
 - Officially add support for Python 3.9 and 3.10.
-- Drop support for Python 3.4.
+- Drop support for Python 2.6 and 3.4.
 
 2.2.3 (2021-01-26)
 ==================
